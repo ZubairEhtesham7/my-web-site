@@ -1,10 +1,22 @@
-function palindrome() {
-  var a = document.getElementById("pa").value;
-  var b = "";
-  for (i = a.length - 1; i >= 0; i--) {
-    bb = b + a[i];
+const txtInput = document.querySelector(".inputs input"),
+  checkBtn = document.querySelector(".inputs button"),
+  infoTxt = document.querySelector(".info-txt");
+let filterInput;
+
+checkBtn.addEventListener("click", () => {
+  let reverseInput = filterInput.split("").reverse().join("");
+  infoTxt.style.display = "block";
+  if (filterInput != reverseInput) {
+    return (infoTxt.innerHTML = `No, <span>'${txtInput.value}'</span> isn't a palindrome!`);
   }
-  if (a == b)
-    document.getElementById("pa2").value = b + " is a Palindrome String ";
-  else document.getElementById("pa2").value = b + " is not a Palindrome String";
-}
+  infoTxt.innerHTML = `Yes, <span>'${txtInput.value}'</span> is a palindrome!`;
+});
+
+txtInput.addEventListener("keyup", () => {
+  filterInput = txtInput.value.toLowerCase().replace(/[^A-Z0-9]/gi, "");
+  if (filterInput) {
+    return checkBtn.classList.add("active");
+  }
+  infoTxt.style.display = "none";
+  checkBtn.classList.remove("active");
+});
