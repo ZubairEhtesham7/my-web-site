@@ -1,21 +1,10 @@
-function checkPalindrome(string) {
-  // find the length of a string
-  const len = string.length;
-
-  // loop through half of the string
-  for (let i = 0; i < len / 2; i++) {
-    // check if first and last string are same
-    if (string[i] !== string[len - 1 - i]) {
-      return "It is not a palindrome";
-    }
+function palindrome() {
+  var a = document.getElementById("pa").value;
+  var b = "";
+  for (i = a.length - 1; i >= 0; i--) {
+    bb = b + a[i];
   }
-  return "It is a palindrome";
+  if (a == b)
+    document.getElementById("pa2").value = b + " is a Palindrome String ";
+  else document.getElementById("pa2").value = b + " is not a Palindrome String";
 }
-
-// take input
-const string = prompt("Enter a string: ");
-
-// call the function
-const value = checkPalindrome(string);
-
-console.log(value);
